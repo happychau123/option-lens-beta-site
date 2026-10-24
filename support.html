@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Local installation help, market data troubleshooting and identity-checked deletion instructions for Option Lens.">
+  <meta name="theme-color" content="#090d17">
+  <title>Setup, support and deletion | Option Lens — Nakamoto Studio</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+<header class="top"><div class="wrap">
+    <a class="brand" href="./index.html">OPTION LENS <small>Research tools by Nakamoto Studio</small></a>
+    <nav aria-label="Main navigation">
+      <a href="./index.html">Overview</a>
+      <a href="./index.html#setup">Local setup</a>
+      <a href="./index.html#faq">FAQ</a>
+      <a href="./support.html" aria-current="page">Support</a>
+      <a href="./privacy.html">Privacy</a>
+      <a href="./terms.html">Terms</a>
+    </nav>
+  </div></header>
+<main id="content" class="wrap">
+  <p class="kicker">Support center · development beta</p>
+  <h1>Get oriented. Keep your data in your control.</h1>
+  <p class="lead">This page supports local source-based testing of Option Lens. There is no Chrome Web Store listing, hosted API, public account registration, checkout or paid Pro plan.</p>
+  <p><a class="action" href="mailto:studionakamoto@gmail.com?subject=Option%20Lens%20support">Email Nakamoto Studio</a> <span class="muted">studionakamoto@gmail.com</span></p>
+
+  <section class="block" id="setup-help"><h2>Local installation and onboarding</h2>
+    <ol>
+      <li><strong>Requirements:</strong> Chrome, Node.js 22+ and a trusted copy of the source repository. At repository root run <code>npm install</code>, <code>npm run test -w @saas/options-overlay</code>, then <code>npm run build -w @saas/options-overlay</code>.</li>
+      <li><strong>Load unpacked:</strong> in Chrome open <code>chrome://extensions</code>, enable <strong>Developer mode</strong>, choose <strong>Load unpacked</strong> and select <code>apps/options-overlay</code>. Do not load unknown third-party ZIPs.</li>
+      <li><strong>Open a supported page:</strong> navigate to the Binance E-options section at <code>https://www.binance.com</code>, for example <code>/en/eoptions</code>; reload the tab after installing. A panel should appear if the URL matches and the page allows it.</li>
+      <li><strong>Try Free ETH:</strong> choose ETH in the overlay, inspect the expiry summary and refresh button. Free needs no account and no local server. Verify index timestamps and the public provider's figures independently.</li>
+      <li><strong>Optional sign-in:</strong> the popup is connected to <code>http://127.0.0.1:3212</code> only. A developer must separately start the local API, set exact extension-origin CORS and manually create a test account using the repository README. A test account begins as Free. Do not use real payment cards or share credentials.</li>
+      <li><strong>Stop testing:</strong> choose <strong>Sign out</strong> in the popup if signed in, then select <strong>Remove</strong> on the extension's Chrome management page. For a separately created backend account, request deletion below.</li>
+    </ol>
+    <p class="notice"><strong>Not a public installer:</strong> any generated development ZIP is for controlled local testing only. It retains a loopback-only HTTP account host permission, not a hosted HTTPS subscriber service. It is not ready for Web Store publication or unaffiliated beta testers.</p>
+  </section>
+
+  <section class="block"><h2>Troubleshooting common issues</h2>
+    <h3>Nothing appears on the options page</h3>
+    <p>Confirm the extension is enabled; open a supported <code>www.binance.com</code> E-options path, such as <code>/en/eoptions</code>; reload the tab. The manifest's match pattern may not cover changed routes, and Binance can change its page architecture. Make sure you loaded the correct <code>apps/options-overlay</code> folder.</p>
+    <h3>“Data unavailable”, blank values or unexpected IV</h3>
+    <p>Check connectivity and Binance's public API availability. The extension validates exchange and index timestamps and some quote fields, but the individual mark response has no per-quote freshness time. Refresh and compare against the provider. A number in the overlay is not an executable quote or a recommendation.</p>
+    <h3>BTC is blocked, or Pro disappears</h3>
+    <p>The Free view supports ETH only. BTC, extra rows and term analytics require a current test Pro entitlement validated through the optional local API. An expired, revoked or unavailable account service falls back to Free; signing in does not inherently grant Pro.</p>
+    <h3>The popup says “Account service unavailable”</h3>
+    <p>Anonymous Free should still work without a server. For deliberately created local accounts, confirm that the backend runs at <code>127.0.0.1:3212</code>, the configured Chrome extension ID matches its CORS origin, and your test credentials are valid. Do not expose the loopback backend to the internet.</p>
+    <h3>Can I refresh or use data offline?</h3>
+    <p>Refresh requests another public market snapshot (short cached responses are possible). There is no offline historical database, guarantee of exchange uptime, live-data subscription or predictive alerting service.</p>
+  </section>
+
+  <section class="block" id="delete"><h2>Access, correction and deletion of account data</h2>
+    <ol>
+      <li><strong>No account used:</strong> if you only viewed Free ETH anonymously, remove the Chrome extension to clear extension-side settings/session storage. No Option Lens backend account was created through anonymous Free use.</li>
+      <li><strong>Local account used:</strong> send email from the account address to <a href="mailto:studionakamoto@gmail.com?subject=Option%20Lens%20account%20deletion">studionakamoto@gmail.com</a> with subject <strong>Option Lens account deletion</strong>. Say whether you need a copy/access request, an email correction, or account deletion. Avoid all passwords, tokens, Binance API keys, government IDs and card details.</li>
+      <li><strong>Verify ownership:</strong> support may reply with a confirmation request to the registered account email, or a safer verification mechanism. Never send your password. If you no longer control the address, describe that problem so a manual privacy review can determine a safe process.</li>
+      <li><strong>Operator action:</strong> after verification, an authorized local operator can find the account by known ID and run the administrative <code>delete-account</code> command documented in the repository. This deletes the user and related session rows; unlinked billing webhook event IDs may remain as replay protection.</li>
+      <li><strong>Confirmation and residual data:</strong> ask for confirmation and any information about backup/log retention applicable to the specific test setup. An extension uninstall, sign-out or email alone does not guarantee all server copies were erased.</li>
+    </ol>
+    <p>There is no public in-app deletion endpoint or published processing-time SLA. Requests must be handled consistently with applicable privacy laws. See <a href="./privacy.html#choices">data-handling choices</a>.</p>
+  </section>
+
+  <section class="block" id="report"><h2>Report bugs or security concerns</h2>
+    <p>Email <a href="mailto:studionakamoto@gmail.com?subject=Option%20Lens%20security%20report">studionakamoto@gmail.com</a> for a security report, or use the support subject for a general problem. Helpful details: Chrome version, extension version, approximate time and timezone, affected ETH/BTC symbol or expiry, error text and safe reproduction steps. Provide screenshots only after removing names, emails, tokens, cookies, account details and positions.</p>
+    <p>Do not probe accounts or systems you do not control. We have not published an issue-response SLA or bug bounty. See <a href="./index.html#faq">FAQ</a>, <a href="./terms.html">Terms</a> and <a href="./privacy.html">Privacy</a>.</p>
+  </section>
+</main>
+<footer><div class="wrap">
+    <div><p><strong>Option Lens</strong> · Nakamoto Studio</p><p><a href="mailto:studionakamoto@gmail.com">studionakamoto@gmail.com</a></p></div>
+    <div><p><a href="./index.html">Overview</a> · <a href="./support.html">Support</a> · <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a></p><p>Development/legal draft · 25 October 2026 · Not a published service</p></div>
+  </div></footer>
+</body></html>

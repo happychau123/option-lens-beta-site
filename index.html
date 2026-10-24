@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Option Lens development beta: read-only ETH and BTC options IV research overlay for supported Binance E-options pages. Not publicly released.">
+  <meta name="theme-color" content="#090d17">
+  <title>Option Lens — read-only options IV research | Nakamoto Studio</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <header class="top"><div class="wrap">
+    <a class="brand" href="./index.html">OPTION LENS <small>Research tools by Nakamoto Studio</small></a>
+    <nav aria-label="Main navigation">
+      <a href="./index.html" aria-current="page">Overview</a>
+      <a href="./index.html#setup">Local setup</a>
+      <a href="./index.html#faq">FAQ</a>
+      <a href="./support.html">Support</a>
+      <a href="./privacy.html">Privacy</a>
+      <a href="./terms.html">Terms</a>
+    </nav>
+  </div></header>
+  <main id="content" class="wrap">
+    <section class="hero" aria-label="Option Lens overview">
+      <div class="hero-copy">
+        <span class="eyebrow">Preparing a limited developer beta</span>
+        <h1>Options volatility, in context.</h1>
+        <p class="lead">A read-only Chrome overlay for reviewing implied volatility (IV), bid/ask IV, delta and expiry patterns beside supported Binance E-options pages. Compare research signals without opening an order ticket through the extension.</p>
+        <div class="hero-actions">
+          <a class="action" href="mailto:studionakamoto@gmail.com?subject=Option%20Lens%20beta%20access">Request developer preview</a>
+          <a class="action action-secondary" href="#features">See what it shows</a>
+        </div>
+        <p class="fineprint">Source access is currently invitation-only. Request developer preview access by email; there is no public Chrome Web Store listing, downloadable extension, public sign-up, hosted account service or live paid plan.</p>
+      </div>
+      <figure class="preview" aria-label="Illustrative sketch of the Option Lens overlay, with no live prices">
+        <div class="preview-window">
+          <div class="preview-bar"><span>Option Lens · IV</span><span class="preview-pill">Read-only</span></div>
+          <div class="preview-inside">
+            <div class="preview-row"><span>Underlying</span><strong>ETH</strong></div>
+            <div class="preview-row"><span>Expiry summary</span><span>Median mark IV</span></div>
+            <div class="preview-header"><span>Contract</span><span>Mark IV</span><span>Bid / Ask</span><span>Delta</span></div>
+            <div class="preview-grid"><span>ETH · call</span><span>—</span><span>— / —</span><span>—</span></div>
+            <div class="preview-grid"><span>ETH · put</span><span>—</span><span>— / —</span><span>—</span></div>
+            <div class="preview-row"><span>Public Binance marks</span><span>Not a trading quote</span></div>
+          </div>
+        </div>
+        <figcaption>Illustrative layout only. No live values, returns, strategy scores or forecasts are shown in this mockup.</figcaption>
+      </figure>
+    </section>
+
+    <aside class="notice" aria-label="Beta availability">
+      <p><strong>Not a public launch.</strong> The extension is a local unpacked prototype. Its subscriber API is hardcoded to <code>http://127.0.0.1:3212</code> for development; it is not a production HTTPS service. A beta tester cannot get remote Pro access just by installing the package. Public distribution, publisher verification and any payment flow remain blocked.</p>
+    </aside>
+
+    <section id="features" aria-labelledby="features-title">
+      <div class="section-head">
+        <p class="kicker">The research workflow</p>
+        <h2 id="features-title">Purpose-built to inspect, not execute</h2>
+        <p>Option Lens fetches public options-market data through its extension service worker. It does not require exchange API keys, place orders, or read your trading history.</p>
+      </div>
+      <div class="grid">
+        <article class="panel"><span class="panel-mark">01 · Observe</span><h2>Read mark IV &amp; Greeks</h2><p>See Binance-provided mark, bid/ask IV and delta for selected rows, with an ETH index reference and source timestamp where available.</p></article>
+        <article class="panel"><span class="panel-mark">02 · Compare</span><h2>Across expiry dates</h2><p>Review a median mark-IV summary for an expiry. The simulated Pro tier adds approximate at-the-money (ATM) IV and normalized 30-day term slope.</p></article>
+        <article class="panel"><span class="panel-mark">03 · Verify</span><h2>Know the limits</h2><p>Index and exchange timestamps are checked, but individual mark quotes have no freshness timestamps. Missing, stale or inaccurate values remain possible.</p></article>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="tiers-title">
+      <h2 id="tiers-title">What the prototype supports</h2>
+      <p class="muted">Feature limits are implemented in the development code; Pro is not sold or self-service enabled.</p>
+      <div class="table-scroll"><table>
+        <thead><tr><th scope="col">Research view</th><th scope="col">Free (no account)</th><th scope="col">Pro (local entitlement test only)</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Underlying</th><td>ETH</td><td>ETH and BTC</td></tr>
+          <tr><th scope="row">Option rows shown</th><td>Up to 6</td><td>Up to 30</td></tr>
+          <tr><th scope="row">Expiry dates shown</th><td>1</td><td>Up to 10</td></tr>
+          <tr><th scope="row">IV summary</th><td>Median mark IV</td><td>Median mark IV, approximate ATM IV and term slope</td></tr>
+          <tr><th scope="row">Getting access</th><td>Local unpacked development build</td><td>Operator-created local account and test-only subscription state</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="setup" aria-labelledby="setup-title">
+      <div class="section-head">
+        <p class="kicker">Developer onboarding · local only</p>
+        <h2 id="setup-title">Try the Free ETH view from source</h2>
+        <p>These instructions apply only to developers who have been explicitly granted access to the private source repository. They are not a public download or Chrome Web Store installation process. Chrome and Node.js 22+ are required.</p>
+      </div>
+      <div class="step-list">
+        <div class="step"><h3>Validate the checkout</h3><p>In the repository root, run <code>npm install</code>, then <code>npm run test -w @saas/options-overlay</code> and <code>npm run build -w @saas/options-overlay</code>.</p></div>
+        <div class="step"><h3>Load the extension</h3><p>Open <code>chrome://extensions</code>, enable <strong>Developer mode</strong>, choose <strong>Load unpacked</strong>, and select <code>apps/options-overlay</code>. Reload the Binance tab after installing.</p></div>
+        <div class="step"><h3>Open the supported page</h3><p>Visit a Binance E-options page such as the <code>/en/eoptions</code> route on <code>https://www.binance.com</code>. Choose ETH, refresh for a new snapshot and check timestamps against the exchange.</p></div>
+      </div>
+      <p class="fineprint">Free does not need local sign-in. The popup's sign-in form is for an optional, separately running loopback API with an operator-created test account; sign-in alone does not grant Pro. See <a href="./support.html#setup-help">setup help</a> if the panel is absent.</p>
+    </section>
+
+    <section class="block faq" id="faq" aria-labelledby="faq-title">
+      <p class="kicker">Frequently asked questions</p>
+      <h2 id="faq-title">Before using Option Lens</h2>
+      <details><summary>Can I download Option Lens from the Chrome Web Store?</summary><p>No. The current build is not approved, listed or distributed publicly. Local testing from the private repository is available only to invited developers; request access through the support email.</p></details>
+      <details><summary>Do I need a Binance login or API key?</summary><p>No. The extension requests public market information from Binance. Do not give it passwords, API keys or trading credentials. Availability of the Binance page and market data depends on the provider and your region.</p></details>
+      <details><summary>Are the IV numbers tradable, real-time or predictive?</summary><p>No. They are indicative analytics, not executable prices or forecasts. The public mark endpoint does not supply per-row quote timestamps; independently verify any values before making a financial decision.</p></details>
+      <details><summary>How does Pro work during the beta?</summary><p>Pro is a simulated development entitlement controlled by a locally operated account API. There is no verified public registration, checkout, subscription price or remote access. An offline or expired entitlement falls back to Free.</p></details>
+      <details><summary>Does uninstalling erase my information?</summary><p>Removing the extension clears its on-device extension data. It does not delete a separate operator-created backend account. See the <a href="./support.html#delete">privacy and deletion steps</a>.</p></details>
+      <details><summary>Is Option Lens affiliated with Binance or Chrome?</summary><p>No. Option Lens is an independent Nakamoto Studio prototype, not endorsed or approved by Binance or Google. Follow provider terms and local laws.</p></details>
+    </section>
+
+    <div class="info-strip">
+      <div><strong>Research only. No trading advice.</strong><p class="muted">For issues, privacy questions or a security report, contact Nakamoto Studio.</p></div>
+      <a class="action" href="./support.html">Support &amp; account deletion</a>
+    </div>
+  </main>
+  <footer><div class="wrap">
+    <div><p><strong>Option Lens</strong> · Nakamoto Studio</p><p><a href="mailto:studionakamoto@gmail.com">studionakamoto@gmail.com</a></p></div>
+    <div><p><a href="./index.html">Overview</a> · <a href="./support.html">Support</a> · <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a></p><p>Development/legal draft · 25 October 2026 · Not a published service</p></div>
+  </div></footer>
+</body>
+</html>

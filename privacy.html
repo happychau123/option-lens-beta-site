@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Data handling, local Chrome storage, market data requests and account deletion for the Option Lens development prototype.">
+  <meta name="theme-color" content="#090d17">
+  <title>Privacy notice (draft) | Option Lens — Nakamoto Studio</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+<header class="top"><div class="wrap">
+    <a class="brand" href="./index.html">OPTION LENS <small>Research tools by Nakamoto Studio</small></a>
+    <nav aria-label="Main navigation">
+      <a href="./index.html">Overview</a>
+      <a href="./index.html#setup">Local setup</a>
+      <a href="./index.html#faq">FAQ</a>
+      <a href="./support.html">Support</a>
+      <a href="./privacy.html" aria-current="page">Privacy</a>
+      <a href="./terms.html">Terms</a>
+    </nav>
+  </div></header>
+<main id="content" class="wrap">
+  <p class="kicker">Transparency · privacy draft</p>
+  <h1>What Option Lens touches — and what it doesn't.</h1>
+  <p class="lead">This notice describes the current locally tested Chrome extension and optional local subscriber API. It is not a final production privacy policy. Any hosted beta must undergo a fresh data inventory, legal review and retention assessment before release.</p>
+  <p class="tag">Review before public distribution</p>
+
+  <section class="block"><h2>Publisher and contact</h2>
+    <p>Option Lens is being prepared under the Nakamoto Studio working brand. The final operating legal entity, street address, governing privacy disclosures and production contact process are not settled here. For privacy, account access, correction or deletion inquiries contact <a href="mailto:studionakamoto@gmail.com?subject=Option%20Lens%20privacy">studionakamoto@gmail.com</a>. Do not email passwords, session tokens, Binance credentials or payment information.</p>
+    <p><strong>Current status:</strong> no published extension, hosted subscriber API, public registration or live payment operation.</p>
+  </section>
+
+  <section class="block"><h2>Information handled in the development extension</h2>
+    <div class="table-scroll"><table>
+      <thead><tr><th scope="col">Information</th><th scope="col">Where and why</th><th scope="col">Your control</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Public options prices, index and contract details</th><td>The extension service worker requests exchange, mark and index information from <code>https://eapi.binance.com</code>. Binance may receive your IP/network request metadata, subject to its own practices. Quote responses are not uploaded to the Option Lens local account API.</td><td>Stop requests by disabling or removing the extension.</td></tr>
+        <tr><th scope="row">Selected asset (ETH/BTC)</th><td>Saved in Chrome <code>storage.local</code> on your device so the overlay remembers your choice.</td><td>Change the choice in the panel/popup or remove the extension.</td></tr>
+        <tr><th scope="row">Optional development login</th><td>When you choose to sign in, email and password go from the service worker to the configured loopback API at <code>http://127.0.0.1:3212</code>. The extension does not persist the password. Its session token is held in Chrome <code>storage.session</code>, not in Binance page scripts.</td><td>Sign out to clear the local token and attempt backend revocation; account deletion is separate.</td></tr>
+        <tr><th scope="row">Page context</th><td>The content script runs only on matching Binance E-options pages to render an overlay. It does not request trading API keys, read orders, transfer positions or submit trades.</td><td>Disable the extension or revoke its permissions in Chrome.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted">The inspected prototype contains no third-party analytics SDK or advertising tracker. That is not a claim about future builds, browser telemetry, providers, network infrastructure or hosting logs.</p>
+  </section>
+
+  <section class="block"><h2>Optional local subscriber database</h2>
+    <p>Only if an operator separately creates a test account, the prototype SQLite backend keeps normalized email, a salt and scrypt password hash, a hash of each bearer session token, session expiry, and optional Stripe customer/subscription identifiers, subscription status and expiry. Signed billing webhook event IDs can be stored to prevent event replay; no real checkout is configured by this product.</p>
+    <p>Sessions expire after <strong>seven days</strong>. There is no automatic retention limit for account or subscription records in the prototype. Account deletion through the administrative CLI removes the account and associated session rows; billing event identifiers can remain without their former account association. Host logs, backups, disaster recovery copies and their retention depend on the eventual deployment and have not been specified or audited. We cannot promise immediate removal from all backups.</p>
+  </section>
+
+  <section class="block"><h2>Purposes, parties and disclosure</h2>
+    <p>The extension retrieves indicative public market data, stores an asset preference and, only for local development sign-in, requests authentication and an entitlement state. Chrome/Google manages browser extension storage, Binance handles market API requests and the optional local API processes account records. A subscription provider would be involved only if separately configured; the prototype has no live payment flow.</p>
+    <p>No sale of personal information, behavioral ad targeting or trading-account data collection has been implemented in the reviewed source. We cannot represent the data practices of Binance, Chrome, operating systems, or any future hosting provider. Location of processing, legal basis, cross-border transfers, cookies/logs and any third-party processors require a separate pre-launch review.</p>
+  </section>
+
+  <section class="block" id="choices"><h2>Access, correction, deletion and your choices</h2>
+    <ol>
+      <li><strong>Free, anonymous use:</strong> sign-in is not required. Disable or uninstall the extension through Chrome to stop further requests and remove extension-side storage.</li>
+      <li><strong>Local test account:</strong> sign out in the popup, then use the <a href="./support.html#delete">account request procedure</a> to ask for access, correction or deletion. Uninstalling alone cannot delete records maintained by a separate local backend.</li>
+      <li><strong>Identity check:</strong> make the request from the email used for your test account. Support may request a further control-of-account check; do not provide a password, secret or government identity document by ordinary email.</li>
+      <li><strong>Deletion execution:</strong> an authorized operator verifies and uses the local account-deletion CLI; support confirms the outcome and discusses any applicable backups or retained event IDs. No unattended deletion form or response-time guarantee currently exists.</li>
+    </ol>
+    <p>Any mandatory rights or processing deadlines under applicable law take precedence; their scope depends on your location and the actual operator. For details and security reporting, see <a href="./support.html">Support</a>.</p>
+  </section>
+
+  <section class="block"><h2>Safeguards, age and future changes</h2>
+    <p>The prototype hashes backend passwords and session tokens and restricts popup account operations to the extension context. These controls do not amount to a security audit. The current loopback HTTP URL is for local development, not a safe remote production sign-in. Do not operate a real subscriber service with this configuration. Option Lens is not directed at children.</p>
+    <p>Before public deployment, this notice must reflect verified hosting, data retention, deletion and incident response, and any payments/analytics integrations. We will revise public copy before inviting users to a hosted beta. See also <a href="./terms.html">Terms</a> and <a href="./index.html#faq">FAQ</a>.</p>
+    <p class="muted"><strong>Draft updated:</strong> 25 October 2026.</p>
+  </section>
+</main>
+<footer><div class="wrap">
+    <div><p><strong>Option Lens</strong> · Nakamoto Studio</p><p><a href="mailto:studionakamoto@gmail.com">studionakamoto@gmail.com</a></p></div>
+    <div><p><a href="./index.html">Overview</a> · <a href="./support.html">Support</a> · <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a></p><p>Development/legal draft · 25 October 2026 · Not a published service</p></div>
+  </div></footer>
+</body></html>
