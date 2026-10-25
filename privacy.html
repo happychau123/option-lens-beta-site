@@ -25,12 +25,26 @@
 <main id="content" class="wrap">
   <p class="kicker">Transparency · privacy draft</p>
   <h1>What Option Lens touches — and what it doesn't.</h1>
-  <p class="lead">This notice describes the current locally tested Chrome extension and optional local subscriber API. It is not a final production privacy policy. Any hosted beta must undergo a fresh data inventory, legal review and retention assessment before release.</p>
+  <p class="lead">This notice distinguishes the standalone ETH-only preview from the separate account-enabled local development extension. It is not a final production privacy policy. Any hosted beta must undergo a fresh data inventory, legal review and retention assessment before release.</p>
   <p class="tag">Review before public distribution</p>
 
   <section class="block"><h2>Publisher and contact</h2>
     <p>Option Lens is being prepared under the Nakamoto Studio working brand. The final operating legal entity, street address, governing privacy disclosures and production contact process are not settled here. For privacy, account access, correction or deletion inquiries contact <a href="mailto:studionakamoto@gmail.com?subject=Option%20Lens%20privacy">studionakamoto@gmail.com</a>. Do not email passwords, session tokens, Binance credentials or payment information.</p>
     <p><strong>Current status:</strong> no published extension, hosted subscriber API, public registration or live payment operation. A separate internal ETH-only preview candidate omits account sign-in and localhost permissions; the optional subscriber-account details below refer to the original development prototype, not that candidate.</p>
+  </section>
+
+  <section class="block" id="eth-preview"><h2>Standalone ETH-only preview: exact data-handling summary</h2>
+    <p><strong>This section applies only to the separately packaged, no-login ETH-only candidate</strong> described in the <a href="./preview-guide.html">ETH preview guide</a>. It is the extension version being prepared for limited external beta evaluation, not yet released. It is different from the older account-enabled development prototype described below.</p>
+    <div class="table-scroll"><table>
+      <thead><tr><th scope="col">Data or permission</th><th scope="col">What the ETH preview does</th><th scope="col">Control and limitation</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Exchange market data</th><td>Its background worker makes read-only GET requests directly to <code>https://eapi.binance.com</code> for public ETH options exchange information, mark IV/Greeks and the ETH index. A successful snapshot stays in temporary worker memory for up to roughly 25 seconds between automatic requests. A manual Refresh requests a fresh snapshot.</td><td>Binance and network providers may receive your IP address, timestamps and request metadata. Binance's own privacy terms apply independently; Nakamoto Studio cannot delete provider-side logs.</td></tr>
+        <tr><th scope="row">Binance page route</th><td>The content script checks the supported <code>www.binance.com</code> E-options URL path and adds the read-only overlay. The background worker checks the sender's Binance HTTPS URL and extension identity. No browsing history, order ticket, balances, user ID, exchange cookies or wallet keys are read or uploaded to Nakamoto Studio.</td><td>Disable or remove the extension in Chrome to stop its overlay and public market-data requests. Browser/platform behavior outside the extension is controlled by its operator.</td></tr>
+        <tr><th scope="row">Browser storage</th><td>No <code>storage</code> permission, Chrome extension storage calls, cookies, account identifiers or persistent settings are used. ETH is the only supported underlying.</td><td>Uninstalling removes the candidate's extension runtime; no Nakamoto Studio user-account record is created for anonymous preview use.</td></tr>
+        <tr><th scope="row">Nakamoto Studio services</th><td>No hosted subscriber API, email registration, login, Stripe checkout, user analytics, advertising SDK, remote executable code or tracking service is included in this candidate. The extension does not submit orders or require Binance credentials.</td><td>Contact <a href="mailto:studionakamoto@gmail.com?subject=Option%20Lens%20ETH%20preview%20privacy">studionakamoto@gmail.com</a> for privacy questions, without sending credentials or financial-account details.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted">These statements describe the audited local candidate, not every Chrome or Binance data practice, and are still subject to operator/legal review before publication. The public market-data endpoints do not supply freshness timestamps for individual mark quotes.</p>
   </section>
 
   <section class="block"><h2>Information handled in the development extension</h2>

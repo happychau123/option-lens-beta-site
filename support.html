@@ -28,6 +28,11 @@
   <p class="lead">This page supports local source-based testing of Option Lens. There is no Chrome Web Store listing, hosted API, public account registration, checkout or paid Pro plan.</p>
   <p><a class="action" href="mailto:studionakamoto@gmail.com?subject=Option%20Lens%20support">Email Nakamoto Studio</a> <span class="muted">studionakamoto@gmail.com</span></p>
 
+  <section class="block" id="eth-preview-help"><h2>ETH-only standalone preview (separate from Pro development build)</h2>
+    <p>The independently packaged ETH candidate does not use local sign-in, persistent browser storage, BTC/Pro access or a localhost API. It is not publicly distributed. Its authorized developer setup, exact folder, permissions and no-account deletion steps are in the <a href="./preview-guide.html">ETH-only preview guide</a> and its <a href="./privacy.html#eth-preview">specific privacy summary</a>. Never install the main <code>apps/options-overlay</code> directory when evaluating the ETH-only candidate; that directory is the separate Pro-capable local prototype.</p>
+    <p>Manual Refresh on the ETH candidate requests a fresh public snapshot; when provider data are invalid or unavailable, the panel reports an error rather than showing invented replacement values. Uninstalling it stops requests. Binance and browser request logs are outside Nakamoto Studio's direct control.</p>
+  </section>
+
   <section class="block" id="setup-help"><h2>Local installation and onboarding</h2>
     <ol>
       <li><strong>Requirements:</strong> Chrome, Node.js 22+ and a trusted copy of the source repository. At repository root run <code>npm install</code>, <code>npm run test -w @saas/options-overlay</code>, then <code>npm run build -w @saas/options-overlay</code>.</li>
