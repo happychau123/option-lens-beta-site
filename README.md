@@ -2,7 +2,7 @@
 
 Public static preview site for Nakamoto Studio, not the proprietary SaaS source or a released extension.
 
-- Public pages are development/legal drafts, marked noindex.
+- Most public pages are development/legal drafts, marked noindex. The new `eth-preview-privacy.html` is the version-specific privacy policy for the unpublished ETH Preview 0.1.0 package; it does not grant Binance market-data rights or constitute product-release authorization.
 - `preview-guide.html` describes the internal ETH-only, no-account test candidate and how authorized source holders can load the standalone build; this is **not** an invitation or download for external testers.
 - No browser extension, API credentials, backend code, merchant data, payment integration or tracker is published here.
 - Source of the public pages: private saas-portfolio monorepo, apps/options-overlay/public.

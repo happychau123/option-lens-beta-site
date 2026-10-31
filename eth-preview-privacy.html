@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Version-specific privacy policy for Option Lens ETH Preview 0.1.0.">
+  <meta name="theme-color" content="#090d17">
+  <title>ETH Preview privacy policy | Option Lens — Nakamoto Studio</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <header class="top"><div class="wrap">
+    <a class="brand" href="./index.html">OPTION LENS <small>Research tools by Nakamoto Studio</small></a>
+    <nav aria-label="Main navigation">
+      <a href="./index.html">Overview</a>
+      <a href="./index.html#setup">Local setup</a>
+      <a href="./index.html#faq">FAQ</a>
+      <a href="./support.html">Support</a>
+      <a href="./eth-preview-privacy.html" aria-current="page">ETH Preview privacy</a>
+      <a href="./terms.html">Terms</a>
+    </nav>
+  </div></header>
+  <main id="content" class="wrap">
+    <p class="kicker">Privacy policy · version 0.1.0 · updated 31 October 2026</p>
+    <h1>Option Lens — ETH Preview: privacy policy</h1>
+    <p class="lead">This policy describes only the separately packaged, read-only Option Lens ETH Preview Chrome extension version 0.1.0, published by Nakamoto Studio. The extension is an unpublished Chrome Web Store draft, not a currently available public release. The separate account-enabled ETH/BTC development prototype is <strong>not</strong> covered by this version-specific policy.</p>
+
+    <section class="block" id="publisher"><h2>Publisher and privacy contact</h2>
+      <p>Nakamoto Studio is the Chrome Web Store publisher of Option Lens — ETH Preview. For privacy questions, support, or a request concerning information voluntarily sent to support, email <a href="mailto:studionakamoto@gmail.com?subject=Option%20Lens%20ETH%20Preview%20privacy">studionakamoto@gmail.com</a>. Do not email Binance credentials, financial-account details, identity documents, or other secrets.</p>
+    </section>
+
+    <section class="block" id="purpose"><h2>Single purpose and website access</h2>
+      <p>The extension displays a read-only overlay with public ETH options implied volatility (mark, bid and ask), delta, a derived median IV for one expiry, and an ETH index reference next to supported <code>https://www.binance.com/…/eoptions</code> pages. It uses a narrowly scoped content script to check the current Binance URL path, insert its own panel, respond to the panel's Refresh and collapse buttons, and render received data. It checks for its own existing panel to avoid duplicate insertion.</p>
+      <p>It does <strong>not</strong> read order tickets, account balances, exchange cookies, usernames, wallet details, API keys, or messages on the Binance page. It does not collect general browsing history, monitor activity on unrelated websites, or place orders.</p>
+    </section>
+
+    <section class="block" id="data"><h2>Data processed and shared</h2>
+      <div class="table-scroll"><table>
+        <thead><tr><th scope="col">Information</th><th scope="col">Purpose and handling</th><th scope="col">Parties and retention</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Public Binance market data</th><td>To display the panel, the extension's background worker makes HTTPS read-only GET requests directly from your browser to <code>https://eapi.binance.com</code>: <code>/eapi/v1/exchangeInfo</code>, <code>/eapi/v1/mark</code> and <code>/eapi/v1/index?underlying=ETHUSDT</code>. It computes the displayed median IV locally.</td><td>Binance provides the response. Successful snapshots are kept only in temporary extension worker memory for a maximum of roughly 25 seconds between reuses; no local database or persistent cache is used.</td></tr>
+          <tr><th scope="row">IP address and network metadata</th><td>As with an ordinary direct HTTPS request, Binance and network intermediaries may observe your IP address, request time, requested API path and other connection metadata.</td><td>These network requests go directly to Binance, <em>not</em> a Nakamoto Studio backend. Binance and network providers control their own logs and privacy practices; Nakamoto Studio cannot delete those records.</td></tr>
+          <tr><th scope="row">Current supported page URL</th><td>Only the URL path of the supported Binance E-options tab is checked to decide whether the overlay can run; the worker verifies the sender's Binance HTTPS origin and extension identity before responding.</td><td>Used locally in the browser. The current tab URL is not sent to Nakamoto Studio or included in the outbound Binance API requests.</td></tr>
+          <tr><th scope="row">Support correspondence, if you contact us</th><td>If you voluntarily email the publisher, your email address and message contents are used to address that request.</td><td>Handled through the publisher's email provider, Google/Gmail, subject to its service terms and retention practices. It is not data collected automatically by the ETH Preview extension.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="block" id="not-collected"><h2>What the ETH Preview does not collect</h2>
+      <p>Version 0.1.0 contains no login, user account, password processing, payment or subscription functionality, personal analytics, advertising SDK, telemetry, location tracking, cross-site profiling, browser storage permission, or remote executable code. It does not transmit website content, browsing history or financial-account data to a publisher-operated service. Public options price and Greeks figures are market data, not information about your personal portfolio.</p>
+      <p>The Chrome browser, Google Chrome Web Store, Binance, your operating system, and internet service providers have independent data practices. This policy does not claim to control their logs, browser telemetry, account information, or site behavior.</p>
+    </section>
+
+    <section class="block" id="controls"><h2>Your choices, deletion and security</h2>
+      <p>You can disable or uninstall the extension in <code>chrome://extensions</code> to stop the overlay and future API requests. Uninstalling ends its temporary in-memory state. This version does not create a Nakamoto Studio subscriber account or database record, so there is no extension-side account to delete. Email the contact above about support correspondence if you seek access, correction, or deletion; requests are handled subject to applicable legal requirements and provider retention obligations.</p>
+      <p>Market-data requests use HTTPS. No secret account credentials are required or requested by this version. API responses are treated as data, never evaluated as executable scripts.</p>
+    </section>
+
+    <section class="block" id="limited-use"><h2>Use limitations and policy changes</h2>
+      <p>This extension uses information solely to provide its disclosed ETH options research overlay. It does not sell user data, transfer it for advertising, use it for creditworthiness or lending decisions, or use it for an unrelated purpose. Use of information received from Chrome APIs will adhere to the Chrome Web Store User Data Policy, including its Limited Use requirements.</p>
+      <p>Any future account-enabled or paid product, new third-party integration, analytics collection, or material change to the data practices requires an updated notice and extension review before distribution. This page covers the specific ETH Preview v0.1.0 package only and does not provide permission to use or redistribute Binance market data. See our <a href="./support.html">support page</a> and separate <a href="./privacy.html">development-prototype privacy notice</a>.</p>
+      <p class="muted">Last updated: 31 October 2026. The Chrome Web Store item remains an unpublished private draft while provider rights and release acceptance are reviewed.</p>
+    </section>
+  </main>
+  <footer><div class="wrap">
+    <div><p><strong>Option Lens</strong> · Nakamoto Studio</p><p><a href="mailto:studionakamoto@gmail.com">studionakamoto@gmail.com</a></p></div>
+    <div><p><a href="./index.html">Overview</a> · <a href="./support.html">Support</a> · <a href="./eth-preview-privacy.html">ETH Preview privacy</a> · <a href="./terms.html">Terms</a></p><p>Read-only preview · 31 October 2026 · Not publicly released</p></div>
+  </div></footer>
+</body>
+</html>
